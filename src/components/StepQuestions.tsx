@@ -42,7 +42,7 @@ export default function StepQuestions({ questions, title, subtitle, onDone }: Pr
           <span>{title}</span>
           <span>{current + 1} / {questions.length}</span>
         </div>
-        <div className="h-1.5 bg-[#4a2880]/55 rounded-full overflow-hidden">
+        <div className="h-1.5 bg-[#1a0a2e]/75 rounded-full overflow-hidden">
           <div
             className="h-full bg-blue-600 rounded-full transition-all duration-300"
             style={{ width: `${progress}%` }}
@@ -51,7 +51,7 @@ export default function StepQuestions({ questions, title, subtitle, onDone }: Pr
         <p className="text-xs text-purple-300/50">{subtitle}</p>
       </div>
 
-      <div className="bg-[#3d1f6b]/65 border border-purple-800/30 rounded-xl p-6 space-y-5">
+      <div className="bg-[#1a0a2e]/85 border border-purple-800/30 rounded-xl p-6 space-y-5">
         <p className="text-slate-100 font-medium leading-relaxed">
           <span className="text-purple-300/50 mr-2 text-sm">Q{current + 1}.</span>
           {q.text}
@@ -66,7 +66,7 @@ export default function StepQuestions({ questions, title, subtitle, onDone }: Pr
               className={`w-full text-left px-4 py-3 rounded-lg border text-sm transition-all flex gap-3 items-start ${
                 selected === opt.letter
                   ? 'border-blue-500 bg-blue-600/20 text-blue-100'
-                  : 'border-purple-700/40 bg-[#4a2880]/30 text-slate-300 hover:border-purple-600/60 hover:bg-[#4a2880]/55'
+                  : 'border-purple-700/40 bg-[#1a0a2e]/45 text-slate-300 hover:border-purple-600/60 hover:bg-[#1a0a2e]/75'
               }`}
             >
               <span className={`font-bold shrink-0 w-5 ${selected === opt.letter ? 'text-blue-400' : 'text-purple-300/50'}`}>

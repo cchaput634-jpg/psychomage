@@ -36,7 +36,7 @@ export default function StepResults({ profile, branch, answers, chosenScenario, 
       </div>
 
       {/* Header card */}
-      <div className="bg-[#3d1f6b]/65 border border-purple-800/30 rounded-xl p-5 space-y-3">
+      <div className="bg-[#1a0a2e]/85 border border-purple-800/30 rounded-xl p-5 space-y-3">
         <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
           <div>
             <p className="text-xs text-purple-300/50 uppercase">Patient</p>
@@ -67,7 +67,7 @@ export default function StepResults({ profile, branch, answers, chosenScenario, 
       </div>
 
       {/* Global metrics */}
-      <div className="bg-[#3d1f6b]/65 border border-purple-800/30 rounded-xl p-5 space-y-4">
+      <div className="bg-[#1a0a2e]/85 border border-purple-800/30 rounded-xl p-5 space-y-4">
         <div className="flex items-center justify-between">
           <p className="text-sm font-medium text-slate-300">Métriques Globales de Personnalité</p>
           <p className="text-xs text-purple-300/50">{total} réponses</p>
@@ -86,7 +86,7 @@ export default function StepResults({ profile, branch, answers, chosenScenario, 
                 </span>
                 <span className="text-slate-200 font-mono font-semibold">{percentages[letter]}%</span>
               </div>
-              <div className="h-2.5 bg-[#4a2880]/55 rounded-full overflow-hidden">
+              <div className="h-2.5 bg-[#1a0a2e]/75 rounded-full overflow-hidden">
                 <div
                   className="h-full rounded-full transition-all duration-700"
                   style={{ width: `${percentages[letter]}%`, backgroundColor: LETTER_COLORS[letter] }}
@@ -99,7 +99,7 @@ export default function StepResults({ profile, branch, answers, chosenScenario, 
 
       {/* Chosen scenario */}
       {chosenScenario !== null && scenarios[chosenScenario] && (
-        <div className="bg-[#3d1f6b]/65 border border-purple-800/30 rounded-xl p-5 space-y-2">
+        <div className="bg-[#1a0a2e]/85 border border-purple-800/30 rounded-xl p-5 space-y-2">
           <p className="text-xs text-purple-300/50 uppercase tracking-widest">Mise en situation choisie</p>
           <p className="text-sm text-slate-300">Scénario {chosenScenario + 1}</p>
           <p className="text-xs text-slate-400 italic">{scenarios[chosenScenario].text}</p>

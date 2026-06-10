@@ -60,7 +60,7 @@ function QuestionEditModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70">
-      <div className="bg-[#3d1f6b]/65 border border-purple-700/40 rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+      <div className="bg-[#1a0a2e]/85 border border-purple-700/40 rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between px-5 py-4 border-b border-purple-800/30">
           <h3 className="font-semibold text-slate-100 text-sm">Modifier la question</h3>
           <button onClick={onClose} className="text-slate-400 hover:text-slate-200 text-lg leading-none">✕</button>
@@ -73,7 +73,7 @@ function QuestionEditModal({
               value={text}
               onChange={e => setText(e.target.value)}
               rows={3}
-              className="w-full bg-[#4a2880]/55 border border-purple-700/40 text-slate-100 rounded-lg px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-600"
+              className="w-full bg-[#1a0a2e]/75 border border-purple-700/40 text-slate-100 rounded-lg px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-600"
             />
           </div>
 
@@ -96,7 +96,7 @@ function QuestionEditModal({
                   type="text"
                   value={opt.text}
                   onChange={e => setOptionText(i, e.target.value)}
-                  className="flex-1 bg-[#4a2880]/55 border border-purple-700/40 text-slate-100 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
+                  className="flex-1 bg-[#1a0a2e]/75 border border-purple-700/40 text-slate-100 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
                 />
                 <button
                   onClick={() => removeOption(i)}
@@ -153,7 +153,7 @@ function QuestionRow({
   const [moveOpen, setMoveOpen] = useState(false)
 
   return (
-    <div className="bg-[#4a2880]/40 border border-purple-700/30 rounded-lg px-3 py-2.5 group">
+    <div className="bg-[#1a0a2e]/60 border border-purple-700/30 rounded-lg px-3 py-2.5 group">
       <div className="flex items-start gap-2">
         {/* Order arrows */}
         <div className="flex flex-col gap-0.5 shrink-0 pt-0.5">
@@ -186,7 +186,7 @@ function QuestionRow({
               ↪
             </button>
             {moveOpen && (
-              <div className="absolute right-0 top-7 z-20 bg-[#4a2880]/55 border border-purple-700/40 rounded-lg shadow-xl w-52 py-1">
+              <div className="absolute right-0 top-7 z-20 bg-[#1a0a2e]/75 border border-purple-700/40 rounded-lg shadow-xl w-52 py-1">
                 {ALL_SECTIONS.filter(s => s !== section).map(s => (
                   <button
                     key={s}
@@ -258,7 +258,7 @@ function SectionPanel({
       {/* Header */}
       <button
         onClick={() => setOpen(v => !v)}
-        className="w-full flex items-center gap-3 px-4 py-3 bg-[#3d1f6b]/65 hover:bg-[#4a2880]/55 transition-colors text-left"
+        className="w-full flex items-center gap-3 px-4 py-3 bg-[#1a0a2e]/85 hover:bg-[#1a0a2e]/75 transition-colors text-left"
       >
         <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: color }} />
         <span className="flex-1 font-medium text-slate-200 text-sm">{SECTION_LABELS[sectionKey]}</span>
@@ -268,7 +268,7 @@ function SectionPanel({
 
       {/* Questions list */}
       {open && (
-        <div className="bg-[#3d1f6b]/65/50 px-3 pb-3 space-y-2 pt-2">
+        <div className="bg-[#1a0a2e]/85/50 px-3 pb-3 space-y-2 pt-2">
           {questions.length === 0 && (
             <p className="text-xs text-purple-400/40 italic text-center py-3">Aucune question dans cette section.</p>
           )}
