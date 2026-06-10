@@ -87,7 +87,7 @@ export default function App() {
 
   if (status === 'loading') {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 50%, #1a0a2e 100%)' }}>
+      <div className="min-h-screen flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #2e1650 0%, #432373 50%, #2e1650 100%)' }}>
         <div className="text-center space-y-3">
           <div className="w-10 h-10 rounded-full border-2 border-t-transparent animate-spin mx-auto" style={{ borderColor: '#c084fc', borderTopColor: 'transparent' }} />
           <p className="text-purple-300 text-sm">Chargement du questionnaire…</p>
@@ -97,7 +97,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen text-slate-100" style={{ background: 'linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 50%, #1a0a2e 100%)' }}>
+    <div className="min-h-screen text-slate-100" style={{ background: 'linear-gradient(135deg, #2e1650 0%, #432373 50%, #2e1650 100%)' }}>
       {editorOpen && (
         <Editor
           bank={bank}
@@ -116,7 +116,7 @@ export default function App() {
           <img
             src="/logo.png"
             alt="Psychomage"
-            className="w-9 h-9 object-contain"
+            className="w-14 h-14 object-contain"
           />
           <span className="font-semibold tracking-wide text-sm uppercase" style={{ color: '#e9d5ff' }}>
             Diagnostic Psychomage
