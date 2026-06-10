@@ -409,9 +409,9 @@ export const BRANCHES: Record<Branch, Question[]> = {
   rouge: BRANCHE_ROUGE,
 }
 
-export function determineBranch(answers: Record<string, Letter>): Branch {
+export function determineBranch(answers: Record<string, Letter>, tronc: Question[] = TRONC_COMMUN): Branch {
   const counts: Record<Letter, number> = { A: 0, B: 0, C: 0, D: 0, E: 0 }
-  TRONC_COMMUN.forEach(q => {
+  tronc.forEach(q => {
     const a = answers[q.id]
     if (a) counts[a]++
   })

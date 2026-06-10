@@ -1,0 +1,8 @@
+name = "psychomage"
+compatibility_date = "2024-09-23"
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "psychomage-db"
+database_id = "178de7ae-912c-44a4-9e62-477db795b2dd"

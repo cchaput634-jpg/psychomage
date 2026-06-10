@@ -1,9 +1,10 @@
 import type { Letter, Branch } from '../data/questions'
-import { computeStats, BRANCH_LABELS, LETTER_LABELS, TRONC_COMMUN, MODULE_CREATURE } from '../data/questions'
+import { computeStats, BRANCH_LABELS, LETTER_LABELS } from '../data/questions'
 
 interface Props {
   answers: Record<string, Letter>
   branch: Branch
+  troncIds: Set<string>
   onContinue: () => void
 }
 
@@ -15,20 +16,14 @@ const LETTER_COLORS: Record<Letter, string> = {
   E: '#ef4444',
 }
 
-export default function StepIntermediate({ answers, branch, onContinue }: Props) {
-  // Only count tronc commun + module créature answers for intermediate stats
-  const tcIds = new Set([
-    ...TRONC_COMMUN.map(q => q.id),
-    ...MODULE_CREATURE.map(q => q.id),
-  ])
+export default function StepIntermediate({ answers, branch, troncIds, onContinue }: Props) {
   const troncAnswers: Record<string, Letter> = {}
   for (const [k, v] of Object.entries(answers)) {
-    if (tcIds.has(k)) troncAnswers[k] = v
+    if (troncIds.has(k)) troncAnswers[k] = v
   }
 
   const { percentages } = computeStats(troncAnswers)
   const bl = BRANCH_LABELS[branch]
-
   const letters: Letter[] = ['A', 'B', 'C', 'D', 'E']
 
   return (
@@ -42,9 +37,7 @@ export default function StepIntermediate({ answers, branch, onContinue }: Props)
         className="rounded-xl border p-5 space-y-4"
         style={{ borderColor: bl.color + '60', backgroundColor: bl.color + '10' }}
       >
-        <p className="text-sm font-medium" style={{ color: bl.color }}>
-          Tendance détectée
-        </p>
+        <p className="text-sm font-medium" style={{ color: bl.color }}>Tendance détectée</p>
         <div className="flex items-center gap-3">
           <div className="w-3 h-3 rounded-full" style={{ backgroundColor: bl.color }} />
           <span className="font-bold text-lg text-slate-100">{bl.label}</span>
@@ -70,10 +63,7 @@ export default function StepIntermediate({ answers, branch, onContinue }: Props)
               <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
                 <div
                   className="h-full rounded-full transition-all duration-500"
-                  style={{
-                    width: `${percentages[letter]}%`,
-                    backgroundColor: LETTER_COLORS[letter],
-                  }}
+                  style={{ width: `${percentages[letter]}%`, backgroundColor: LETTER_COLORS[letter] }}
                 />
               </div>
             </div>

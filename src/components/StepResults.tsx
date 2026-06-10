@@ -1,5 +1,5 @@
-import type { Letter, Branch } from '../data/questions'
-import { computeStats, BRANCH_LABELS, LETTER_LABELS, SCENARIOS } from '../data/questions'
+import type { Letter, Branch, Question } from '../data/questions'
+import { computeStats, BRANCH_LABELS, LETTER_LABELS } from '../data/questions'
 import type { Profile } from '../App'
 
 interface Props {
@@ -7,6 +7,7 @@ interface Props {
   branch: Branch
   answers: Record<string, Letter>
   chosenScenario: number | null
+  scenarios: Question[]
   onRestart: () => void
 }
 
@@ -18,12 +19,14 @@ const LETTER_COLORS: Record<Letter, string> = {
   E: '#ef4444',
 }
 
-export default function StepResults({ profile, branch, answers, chosenScenario, onRestart }: Props) {
+export default function StepResults({ profile, branch, answers, chosenScenario, scenarios, onRestart }: Props) {
   const bl = BRANCH_LABELS[branch]
   const { percentages, total } = computeStats(answers)
 
   const letters: Letter[] = ['A', 'B', 'C', 'D', 'E']
   const dominant = letters.reduce((a, b) => percentages[a] >= percentages[b] ? a : b)
+
+  const scenarioAnswer = chosenScenario !== null ? answers[scenarios[chosenScenario]?.id] : undefined
 
   return (
     <div className="space-y-6">
@@ -45,7 +48,7 @@ export default function StepResults({ profile, branch, answers, chosenScenario, 
           </div>
           <div>
             <p className="text-xs text-slate-500 uppercase">Profil de base</p>
-            <p className="text-slate-100 font-semibold capitalize">
+            <p className="text-slate-100 font-semibold">
               {profile.nature === 'sorcier' ? 'Sorcier' : 'Créature Magique'}
             </p>
           </div>
@@ -56,7 +59,7 @@ export default function StepResults({ profile, branch, answers, chosenScenario, 
         </div>
 
         <div
-          className="rounded-lg px-4 py-3 flex items-center gap-3"
+          className="rounded-lg px-4 py-3"
           style={{ backgroundColor: bl.color + '18', borderLeft: `3px solid ${bl.color}` }}
         >
           <span className="text-sm font-medium" style={{ color: bl.color }}>{bl.description}</span>
@@ -74,14 +77,11 @@ export default function StepResults({ profile, branch, answers, chosenScenario, 
             <div key={letter} className="space-y-1">
               <div className="flex justify-between text-xs">
                 <span className="text-slate-400 flex items-center gap-1.5">
-                  <span
-                    className="inline-block w-2 h-2 rounded-full"
-                    style={{ backgroundColor: LETTER_COLORS[letter] }}
-                  />
+                  <span className="inline-block w-2 h-2 rounded-full" style={{ backgroundColor: LETTER_COLORS[letter] }} />
                   <span className="font-bold" style={{ color: LETTER_COLORS[letter] }}>{letter}%</span>
                   {' '}{LETTER_LABELS[letter]}
                   {dominant === letter && (
-                    <span className="ml-1 text-xs bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded">dominant</span>
+                    <span className="ml-1 bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded text-xs">dominant</span>
                   )}
                 </span>
                 <span className="text-slate-200 font-mono font-semibold">{percentages[letter]}%</span>
@@ -89,10 +89,7 @@ export default function StepResults({ profile, branch, answers, chosenScenario, 
               <div className="h-2.5 bg-slate-800 rounded-full overflow-hidden">
                 <div
                   className="h-full rounded-full transition-all duration-700"
-                  style={{
-                    width: `${percentages[letter]}%`,
-                    backgroundColor: LETTER_COLORS[letter],
-                  }}
+                  style={{ width: `${percentages[letter]}%`, backgroundColor: LETTER_COLORS[letter] }}
                 />
               </div>
             </div>
@@ -101,20 +98,20 @@ export default function StepResults({ profile, branch, answers, chosenScenario, 
       </div>
 
       {/* Chosen scenario */}
-      {chosenScenario !== null && (
+      {chosenScenario !== null && scenarios[chosenScenario] && (
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-2">
           <p className="text-xs text-slate-500 uppercase tracking-widest">Mise en situation choisie</p>
           <p className="text-sm text-slate-300">Scénario {chosenScenario + 1}</p>
-          <p className="text-xs text-slate-400 italic">{SCENARIOS[chosenScenario].text}</p>
-          <div className="pt-1">
-            <span className="text-xs text-slate-500">Réponse : </span>
-            <span className="text-sm font-bold" style={{ color: LETTER_COLORS[answers[SCENARIOS[chosenScenario].id]] }}>
-              {answers[SCENARIOS[chosenScenario].id]}
-            </span>
-            <span className="text-xs text-slate-400 ml-1">
-              — {LETTER_LABELS[answers[SCENARIOS[chosenScenario].id]]}
-            </span>
-          </div>
+          <p className="text-xs text-slate-400 italic">{scenarios[chosenScenario].text}</p>
+          {scenarioAnswer && (
+            <div className="pt-1">
+              <span className="text-xs text-slate-500">Réponse : </span>
+              <span className="text-sm font-bold" style={{ color: LETTER_COLORS[scenarioAnswer] }}>
+                {scenarioAnswer}
+              </span>
+              <span className="text-xs text-slate-400 ml-1">— {LETTER_LABELS[scenarioAnswer]}</span>
+            </div>
+          )}
         </div>
       )}
 
