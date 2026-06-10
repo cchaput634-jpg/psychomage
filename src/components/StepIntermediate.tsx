@@ -48,7 +48,7 @@ export default function StepIntermediate({ answers, branch, troncIds, onContinue
         </p>
       </div>
 
-      <div className="bg-purple-950/60 border border-purple-800/30 rounded-xl p-5 space-y-4">
+      <div className="bg-[#3d1f6b]/65 border border-purple-800/30 rounded-xl p-5 space-y-4">
         <p className="text-sm font-medium text-slate-300">Répartition des réponses</p>
         <div className="space-y-3">
           {letters.map(letter => (
@@ -60,7 +60,7 @@ export default function StepIntermediate({ answers, branch, troncIds, onContinue
                 </span>
                 <span className="text-slate-300 font-mono">{percentages[letter]}%</span>
               </div>
-              <div className="h-2 bg-purple-900/50 rounded-full overflow-hidden">
+              <div className="h-2 bg-[#4a2880]/55 rounded-full overflow-hidden">
                 <div
                   className="h-full rounded-full transition-all duration-500"
                   style={{ width: `${percentages[letter]}%`, backgroundColor: LETTER_COLORS[letter] }}

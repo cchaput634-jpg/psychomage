@@ -33,7 +33,7 @@ export default function StepScenario({ scenarios, onDone }: Props) {
             className={`w-full text-left px-4 py-3.5 rounded-xl border text-sm transition-all ${
               chosen === i
                 ? 'border-purple-500 bg-purple-600/10 text-slate-100'
-                : 'border-purple-700/40 bg-purple-950/60 text-slate-400 hover:border-purple-600/60'
+                : 'border-purple-700/40 bg-[#3d1f6b]/65 text-slate-400 hover:border-purple-600/60'
             }`}
           >
             <span className={`font-bold mr-2 ${chosen === i ? 'text-purple-400' : 'text-purple-300/50'}`}>
@@ -46,7 +46,7 @@ export default function StepScenario({ scenarios, onDone }: Props) {
 
       {/* Answer for chosen scenario */}
       {chosen !== null && (
-        <div className="bg-purple-950/60 border border-purple-800/30 rounded-xl p-5 space-y-4">
+        <div className="bg-[#3d1f6b]/65 border border-purple-800/30 rounded-xl p-5 space-y-4">
           <p className="text-xs text-purple-300/50 uppercase tracking-widest">Votre réponse</p>
           <div className="space-y-2">
             {scenarios[chosen].options.map(opt => (
@@ -57,7 +57,7 @@ export default function StepScenario({ scenarios, onDone }: Props) {
                 className={`w-full text-left px-4 py-3 rounded-lg border text-sm transition-all flex gap-3 items-start ${
                   answer === opt.letter
                     ? 'border-purple-500 bg-purple-600/20 text-purple-100'
-                    : 'border-purple-700/40 bg-purple-900/30 text-slate-300 hover:border-purple-600/60 hover:bg-purple-900/50'
+                    : 'border-purple-700/40 bg-[#4a2880]/30 text-slate-300 hover:border-purple-600/60 hover:bg-[#4a2880]/55'
                 }`}
               >
                 <span className={`font-bold shrink-0 w-5 ${answer === opt.letter ? 'text-purple-400' : 'text-purple-300/50'}`}>
