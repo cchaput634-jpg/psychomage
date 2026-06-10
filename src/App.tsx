@@ -116,7 +116,7 @@ export default function App() {
           <img
             src="/logo.png"
             alt="Psychomage"
-            className="w-14 h-14 object-contain"
+            className="w-24 h-24 object-contain"
           />
           <span className="font-semibold tracking-wide text-sm uppercase" style={{ color: '#e9d5ff' }}>
             Diagnostic Psychomage
