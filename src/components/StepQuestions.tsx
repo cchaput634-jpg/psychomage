@@ -42,18 +42,18 @@ export default function StepQuestions({ questions, title, subtitle, onDone }: Pr
           <span>{title}</span>
           <span>{current + 1} / {questions.length}</span>
         </div>
-        <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+        <div className="h-1.5 bg-purple-900/50 rounded-full overflow-hidden">
           <div
             className="h-full bg-blue-600 rounded-full transition-all duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
-        <p className="text-xs text-slate-500">{subtitle}</p>
+        <p className="text-xs text-purple-300/50">{subtitle}</p>
       </div>
 
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
+      <div className="bg-purple-950/60 border border-purple-800/30 rounded-xl p-6 space-y-5">
         <p className="text-slate-100 font-medium leading-relaxed">
-          <span className="text-slate-500 mr-2 text-sm">Q{current + 1}.</span>
+          <span className="text-purple-300/50 mr-2 text-sm">Q{current + 1}.</span>
           {q.text}
         </p>
 
@@ -66,10 +66,10 @@ export default function StepQuestions({ questions, title, subtitle, onDone }: Pr
               className={`w-full text-left px-4 py-3 rounded-lg border text-sm transition-all flex gap-3 items-start ${
                 selected === opt.letter
                   ? 'border-blue-500 bg-blue-600/20 text-blue-100'
-                  : 'border-slate-700 bg-slate-800/50 text-slate-300 hover:border-slate-600 hover:bg-slate-800'
+                  : 'border-purple-700/40 bg-purple-900/30 text-slate-300 hover:border-purple-600/60 hover:bg-purple-900/50'
               }`}
             >
-              <span className={`font-bold shrink-0 w-5 ${selected === opt.letter ? 'text-blue-400' : 'text-slate-500'}`}>
+              <span className={`font-bold shrink-0 w-5 ${selected === opt.letter ? 'text-blue-400' : 'text-purple-300/50'}`}>
                 {opt.letter}.
               </span>
               <span>{opt.text}</span>
@@ -83,7 +83,7 @@ export default function StepQuestions({ questions, title, subtitle, onDone }: Pr
           <button
             type="button"
             onClick={handlePrev}
-            className="px-5 py-2.5 rounded-xl border border-slate-700 text-slate-400 hover:border-slate-600 text-sm transition-colors"
+            className="px-5 py-2.5 rounded-xl border border-purple-700/40 text-slate-400 hover:border-purple-600/60 text-sm transition-colors"
           >
             ← Précédent
           </button>
@@ -92,7 +92,7 @@ export default function StepQuestions({ questions, title, subtitle, onDone }: Pr
           type="button"
           onClick={handleNext}
           disabled={!selected}
-          className="ml-auto px-6 py-2.5 bg-blue-700 hover:bg-blue-600 disabled:bg-slate-700 disabled:text-slate-500 text-white font-semibold rounded-xl transition-colors text-sm"
+          className="ml-auto px-6 py-2.5 bg-blue-700 hover:bg-blue-600 disabled:bg-slate-700 disabled:text-purple-300/50 text-white font-semibold rounded-xl transition-colors text-sm"
         >
           {isLast ? 'Valider →' : 'Suivant →'}
         </button>

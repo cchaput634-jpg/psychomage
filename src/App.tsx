@@ -87,17 +87,17 @@ export default function App() {
 
   if (status === 'loading') {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 50%, #1a0a2e 100%)' }}>
         <div className="text-center space-y-3">
-          <div className="w-10 h-10 rounded-full border-2 border-blue-700 border-t-transparent animate-spin mx-auto" />
-          <p className="text-slate-400 text-sm">Chargement du questionnaire…</p>
+          <div className="w-10 h-10 rounded-full border-2 border-t-transparent animate-spin mx-auto" style={{ borderColor: '#c084fc', borderTopColor: 'transparent' }} />
+          <p className="text-purple-300 text-sm">Chargement du questionnaire…</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="min-h-screen text-slate-100" style={{ background: 'linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 50%, #1a0a2e 100%)' }}>
       {editorOpen && (
         <Editor
           bank={bank}
@@ -111,26 +111,31 @@ export default function App() {
         />
       )}
 
-      <header className="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-10">
+      <header className="border-b sticky top-0 z-10 backdrop-blur" style={{ borderColor: 'rgba(192,132,252,0.2)', backgroundColor: 'rgba(26,10,46,0.85)' }}>
         <div className="max-w-2xl mx-auto px-4 py-3 flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-blue-700 flex items-center justify-center text-sm font-bold select-none">
-            Ψ
-          </div>
-          <span className="font-semibold text-slate-200 tracking-wide text-sm uppercase">
+          <img
+            src="/logo.png"
+            alt="Psychomage"
+            className="w-9 h-9 object-contain"
+          />
+          <span className="font-semibold tracking-wide text-sm uppercase" style={{ color: '#e9d5ff' }}>
             Diagnostic Psychomage
           </span>
           {profile && (
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-purple-400">
               {profile.patient} · {profile.psychomage}
             </span>
           )}
           <div className="ml-auto flex items-center gap-2">
-            <span title="Synchronisé avec la base de données" className="w-2 h-2 rounded-full bg-green-500" />
+            <span title="Synchronisé avec la base de données" className="w-2 h-2 rounded-full bg-emerald-400" />
           </div>
           <button
             onClick={() => setEditorOpen(true)}
             title="Modifier le questionnaire"
-            className="text-slate-500 hover:text-slate-200 transition-colors p-1.5 rounded-lg hover:bg-slate-800"
+            className="transition-colors p-1.5 rounded-lg"
+            style={{ color: 'rgba(192,132,252,0.6)' }}
+            onMouseEnter={e => (e.currentTarget.style.color = '#e9d5ff')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'rgba(192,132,252,0.6)')}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 20h9" />

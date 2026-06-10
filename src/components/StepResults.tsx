@@ -36,24 +36,24 @@ export default function StepResults({ profile, branch, answers, chosenScenario, 
       </div>
 
       {/* Header card */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
+      <div className="bg-purple-950/60 border border-purple-800/30 rounded-xl p-5 space-y-3">
         <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
           <div>
-            <p className="text-xs text-slate-500 uppercase">Patient</p>
+            <p className="text-xs text-purple-300/50 uppercase">Patient</p>
             <p className="text-slate-100 font-semibold">{profile.patient}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-500 uppercase">Psychomage</p>
+            <p className="text-xs text-purple-300/50 uppercase">Psychomage</p>
             <p className="text-slate-100 font-semibold">{profile.psychomage}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-500 uppercase">Profil de base</p>
+            <p className="text-xs text-purple-300/50 uppercase">Profil de base</p>
             <p className="text-slate-100 font-semibold">
               {profile.nature === 'sorcier' ? 'Sorcier' : 'Créature Magique'}
             </p>
           </div>
           <div>
-            <p className="text-xs text-slate-500 uppercase">Route assignée</p>
+            <p className="text-xs text-purple-300/50 uppercase">Route assignée</p>
             <p className="font-bold" style={{ color: bl.color }}>{bl.label}</p>
           </div>
         </div>
@@ -67,10 +67,10 @@ export default function StepResults({ profile, branch, answers, chosenScenario, 
       </div>
 
       {/* Global metrics */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+      <div className="bg-purple-950/60 border border-purple-800/30 rounded-xl p-5 space-y-4">
         <div className="flex items-center justify-between">
           <p className="text-sm font-medium text-slate-300">Métriques Globales de Personnalité</p>
-          <p className="text-xs text-slate-500">{total} réponses</p>
+          <p className="text-xs text-purple-300/50">{total} réponses</p>
         </div>
         <div className="space-y-3">
           {letters.map(letter => (
@@ -86,7 +86,7 @@ export default function StepResults({ profile, branch, answers, chosenScenario, 
                 </span>
                 <span className="text-slate-200 font-mono font-semibold">{percentages[letter]}%</span>
               </div>
-              <div className="h-2.5 bg-slate-800 rounded-full overflow-hidden">
+              <div className="h-2.5 bg-purple-900/50 rounded-full overflow-hidden">
                 <div
                   className="h-full rounded-full transition-all duration-700"
                   style={{ width: `${percentages[letter]}%`, backgroundColor: LETTER_COLORS[letter] }}
@@ -99,13 +99,13 @@ export default function StepResults({ profile, branch, answers, chosenScenario, 
 
       {/* Chosen scenario */}
       {chosenScenario !== null && scenarios[chosenScenario] && (
-        <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-2">
-          <p className="text-xs text-slate-500 uppercase tracking-widest">Mise en situation choisie</p>
+        <div className="bg-purple-950/60 border border-purple-800/30 rounded-xl p-5 space-y-2">
+          <p className="text-xs text-purple-300/50 uppercase tracking-widest">Mise en situation choisie</p>
           <p className="text-sm text-slate-300">Scénario {chosenScenario + 1}</p>
           <p className="text-xs text-slate-400 italic">{scenarios[chosenScenario].text}</p>
           {scenarioAnswer && (
             <div className="pt-1">
-              <span className="text-xs text-slate-500">Réponse : </span>
+              <span className="text-xs text-purple-300/50">Réponse : </span>
               <span className="text-sm font-bold" style={{ color: LETTER_COLORS[scenarioAnswer] }}>
                 {scenarioAnswer}
               </span>
@@ -118,7 +118,7 @@ export default function StepResults({ profile, branch, answers, chosenScenario, 
       <button
         type="button"
         onClick={onRestart}
-        className="w-full py-3 border border-slate-700 hover:border-slate-600 text-slate-400 hover:text-slate-200 font-medium rounded-xl transition-colors text-sm"
+        className="w-full py-3 border border-purple-700/40 hover:border-purple-600/60 text-slate-400 hover:text-slate-200 font-medium rounded-xl transition-colors text-sm"
       >
         ↺ Nouveau diagnostic
       </button>

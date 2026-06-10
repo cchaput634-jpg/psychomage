@@ -60,8 +60,8 @@ function QuestionEditModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70">
-      <div className="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-800">
+      <div className="bg-purple-950/60 border border-purple-700/40 rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-purple-800/30">
           <h3 className="font-semibold text-slate-100 text-sm">Modifier la question</h3>
           <button onClick={onClose} className="text-slate-400 hover:text-slate-200 text-lg leading-none">✕</button>
         </div>
@@ -73,7 +73,7 @@ function QuestionEditModal({
               value={text}
               onChange={e => setText(e.target.value)}
               rows={3}
-              className="w-full bg-slate-800 border border-slate-700 text-slate-100 rounded-lg px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-600"
+              className="w-full bg-purple-900/50 border border-purple-700/40 text-slate-100 rounded-lg px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-600"
             />
           </div>
 
@@ -91,17 +91,17 @@ function QuestionEditModal({
             </div>
             {options.map((opt, i) => (
               <div key={i} className="flex gap-2 items-center">
-                <span className="text-xs font-bold text-slate-500 w-5 shrink-0">{opt.letter}.</span>
+                <span className="text-xs font-bold text-purple-300/50 w-5 shrink-0">{opt.letter}.</span>
                 <input
                   type="text"
                   value={opt.text}
                   onChange={e => setOptionText(i, e.target.value)}
-                  className="flex-1 bg-slate-800 border border-slate-700 text-slate-100 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
+                  className="flex-1 bg-purple-900/50 border border-purple-700/40 text-slate-100 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
                 />
                 <button
                   onClick={() => removeOption(i)}
                   disabled={options.length <= 2}
-                  className="text-slate-600 hover:text-red-400 disabled:opacity-20 text-sm"
+                  className="text-purple-400/40 hover:text-red-400 disabled:opacity-20 text-sm"
                 >
                   ✕
                 </button>
@@ -110,10 +110,10 @@ function QuestionEditModal({
           </div>
         </div>
 
-        <div className="flex gap-3 px-5 py-4 border-t border-slate-800">
+        <div className="flex gap-3 px-5 py-4 border-t border-purple-800/30">
           <button
             onClick={onClose}
-            className="flex-1 py-2 border border-slate-700 text-slate-400 hover:text-slate-200 rounded-xl text-sm transition-colors"
+            className="flex-1 py-2 border border-purple-700/40 text-slate-400 hover:text-slate-200 rounded-xl text-sm transition-colors"
           >
             Annuler
           </button>
@@ -153,20 +153,20 @@ function QuestionRow({
   const [moveOpen, setMoveOpen] = useState(false)
 
   return (
-    <div className="bg-slate-800/60 border border-slate-700/50 rounded-lg px-3 py-2.5 group">
+    <div className="bg-purple-900/40 border border-purple-700/30 rounded-lg px-3 py-2.5 group">
       <div className="flex items-start gap-2">
         {/* Order arrows */}
         <div className="flex flex-col gap-0.5 shrink-0 pt-0.5">
           <button
             onClick={() => onMove('up')}
             disabled={index === 0}
-            className="text-slate-600 hover:text-slate-300 disabled:opacity-20 text-xs leading-none"
+            className="text-purple-400/40 hover:text-slate-300 disabled:opacity-20 text-xs leading-none"
             title="Monter"
           >▲</button>
           <button
             onClick={() => onMove('down')}
             disabled={index === total - 1}
-            className="text-slate-600 hover:text-slate-300 disabled:opacity-20 text-xs leading-none"
+            className="text-purple-400/40 hover:text-slate-300 disabled:opacity-20 text-xs leading-none"
             title="Descendre"
           >▼</button>
         </div>
@@ -186,12 +186,12 @@ function QuestionRow({
               ↪
             </button>
             {moveOpen && (
-              <div className="absolute right-0 top-7 z-20 bg-slate-800 border border-slate-700 rounded-lg shadow-xl w-52 py-1">
+              <div className="absolute right-0 top-7 z-20 bg-purple-900/50 border border-purple-700/40 rounded-lg shadow-xl w-52 py-1">
                 {ALL_SECTIONS.filter(s => s !== section).map(s => (
                   <button
                     key={s}
                     onClick={() => { onMoveTo(s); setMoveOpen(false) }}
-                    className="w-full text-left px-3 py-1.5 text-xs text-slate-300 hover:bg-slate-700 flex items-center gap-2"
+                    className="w-full text-left px-3 py-1.5 text-xs text-slate-300 hover:bg-purple-700/40 flex items-center gap-2"
                   >
                     <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: SECTION_COLORS[s] }} />
                     {SECTION_LABELS[s]}
@@ -221,7 +221,7 @@ function QuestionRow({
       {/* Options preview */}
       <div className="mt-1.5 ml-6 flex flex-wrap gap-1">
         {question.options.map(o => (
-          <span key={o.letter} className="text-xs bg-slate-700/60 text-slate-500 px-1.5 py-0.5 rounded">
+          <span key={o.letter} className="text-xs bg-slate-700/60 text-purple-300/50 px-1.5 py-0.5 rounded">
             {o.letter}
           </span>
         ))}
@@ -254,23 +254,23 @@ function SectionPanel({
   const editingQ = editingId ? questions.find(q => q.id === editingId) : null
 
   return (
-    <div className="border border-slate-800 rounded-xl overflow-hidden">
+    <div className="border border-purple-800/30 rounded-xl overflow-hidden">
       {/* Header */}
       <button
         onClick={() => setOpen(v => !v)}
-        className="w-full flex items-center gap-3 px-4 py-3 bg-slate-900 hover:bg-slate-800/80 transition-colors text-left"
+        className="w-full flex items-center gap-3 px-4 py-3 bg-purple-950/60 hover:bg-purple-900/50 transition-colors text-left"
       >
         <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: color }} />
         <span className="flex-1 font-medium text-slate-200 text-sm">{SECTION_LABELS[sectionKey]}</span>
-        <span className="text-xs text-slate-500">{questions.length} question{questions.length !== 1 ? 's' : ''}</span>
-        <span className="text-slate-500 text-xs ml-1">{open ? '▲' : '▼'}</span>
+        <span className="text-xs text-purple-300/50">{questions.length} question{questions.length !== 1 ? 's' : ''}</span>
+        <span className="text-purple-300/50 text-xs ml-1">{open ? '▲' : '▼'}</span>
       </button>
 
       {/* Questions list */}
       {open && (
-        <div className="bg-slate-900/50 px-3 pb-3 space-y-2 pt-2">
+        <div className="bg-purple-950/60/50 px-3 pb-3 space-y-2 pt-2">
           {questions.length === 0 && (
-            <p className="text-xs text-slate-600 italic text-center py-3">Aucune question dans cette section.</p>
+            <p className="text-xs text-purple-400/40 italic text-center py-3">Aucune question dans cette section.</p>
           )}
           {questions.map((q, i) => (
             <QuestionRow
@@ -287,7 +287,7 @@ function SectionPanel({
           ))}
           <button
             onClick={onAddQuestion}
-            className="w-full py-2 border border-dashed border-slate-700 text-slate-500 hover:text-slate-300 hover:border-slate-500 rounded-lg text-xs transition-colors"
+            className="w-full py-2 border border-dashed border-purple-700/40 text-purple-300/50 hover:text-slate-300 hover:border-purple-500/60 rounded-lg text-xs transition-colors"
           >
             + Ajouter une question
           </button>
@@ -324,7 +324,7 @@ export default function Editor({
   return (
     <div className="fixed inset-0 z-40 bg-slate-950 overflow-y-auto">
       {/* Header */}
-      <div className="sticky top-0 z-10 border-b border-slate-800 bg-slate-950/95 backdrop-blur">
+      <div className="sticky top-0 z-10 border-b border-purple-800/30 bg-slate-950/95 backdrop-blur">
         <div className="max-w-2xl mx-auto px-4 py-3 flex items-center gap-3">
           <button
             onClick={onClose}
@@ -334,7 +334,7 @@ export default function Editor({
           </button>
           <span className="text-slate-700">|</span>
           <span className="font-semibold text-slate-200 text-sm">Éditeur de questionnaire</span>
-          <span className="ml-auto text-xs text-slate-500">{totalQuestions} questions au total</span>
+          <span className="ml-auto text-xs text-purple-300/50">{totalQuestions} questions au total</span>
         </div>
       </div>
 
@@ -359,11 +359,11 @@ export default function Editor({
         ))}
 
         {/* Reset */}
-        <div className="pt-4 border-t border-slate-800">
+        <div className="pt-4 border-t border-purple-800/30">
           {!confirmReset ? (
             <button
               onClick={() => setConfirmReset(true)}
-              className="text-sm text-slate-500 hover:text-red-400 transition-colors"
+              className="text-sm text-purple-300/50 hover:text-red-400 transition-colors"
             >
               Réinitialiser aux questions par défaut
             </button>
@@ -373,7 +373,7 @@ export default function Editor({
               <div className="flex gap-3">
                 <button
                   onClick={() => setConfirmReset(false)}
-                  className="px-4 py-2 border border-slate-700 text-slate-400 rounded-lg text-sm hover:text-slate-200"
+                  className="px-4 py-2 border border-purple-700/40 text-slate-400 rounded-lg text-sm hover:text-slate-200"
                 >
                   Annuler
                 </button>
